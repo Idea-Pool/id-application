@@ -1,0 +1,54 @@
+@startuml Negative / Fail
+box
+participant "<<AWS>>\nID Application" as ID order 30
+end box
+
+participant "<<Bamboo>>\nAPI tests" as API order 10
+
+box
+participant "<<AWS>>\nFactory Mock" as Factory order 20
+end box
+
+autonumber
+
+== Given ==
+
+API -> Factory : Make laptop:\nPUT /_make\n{factoryId,baseUrl}
+activate Factory
+Factory -> API : 201 Created\n{<laptop>}
+deactivate Factory
+
+API -> Factory : Set explicit failure:\nPOST /_fail/:token\n{status: 409}
+activate Factory
+Factory -> API : 201 Created\n{<fail-exception>}
+deactivate Factory
+
+== When ==
+
+API -> ID : Request ID:\nGET /id?factorId&callback
+activate ID
+ID -> API : 200 OK
+deactivate ID
+
+== Then ==
+
+loop until callback received or TIMEOUT
+    API -> Factory : Callback requests so far:\nGET /_requests/:token
+    activate Factory
+    Factory -> API : 204 No content\n{ requests: [] }
+    deactivate Factory
+
+    ...receiving callback...
+    ID -> Factory : Callback with ID:\nPOST callback\n{id: "pear123_123"}
+    activate Factory
+    Factory -> ID : 409 Conflict\n{id: "pear123_123"}
+    deactivate Factory
+    ...callback received...
+
+    API -> Factory : Callback requests so far:\nGET /_requests/:token
+    activate Factory
+    Factory -> API : 200 OK\n{ requests: [ {\n  status: 409,\n  body: { id: "pear123_123", ... }\n} ]}
+    deactivate Factory
+
+end
+@enduml

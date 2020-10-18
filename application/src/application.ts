@@ -33,6 +33,7 @@ export const serveNextID = (factoryId: number, callback: string): void => {
             console.log(`Status ${factoryId} -> ${nextId}: ${response.status}`);
             if (response.status === FAILED_STATUS) {
                 s.abort();
+                return false;
             }
             const {id} = await response.json();
             if (!id) {

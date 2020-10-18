@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "135e6049-7041-438c-a3d6-fe9a7afab645",
+		"_postman_id": "e6b96084-0c4c-4817-951d-a13879a9570b",
 		"name": "ID Application",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5b65d9a9-1dc2-49d0-9829-c588a5d1babc",
+								"id": "5b15f298-6da7-4933-8091-1ad0fd12ec51",
 								"exec": [
 									"const factoryHost = pm.environment.get('factoryHost');\r",
 									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
@@ -26,7 +26,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5f92477b-088c-4fa9-bd47-79986d524c04",
+								"id": "695150be-8a75-4840-9499-eb515bf8b12f",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -64,7 +64,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c46359a8-570c-46dd-bcac-80d92d2c8ee0",
+								"id": "87f2446b-e6d1-4b23-aed8-a902b9a5e726",
 								"exec": [
 									"const factoryHost = pm.environment.get('factoryHost');\r",
 									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
@@ -76,7 +76,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cd3ba4ad-c5de-40ad-935d-0b21c2c590fa",
+								"id": "c37f4e53-4e18-4755-b0b7-d78e32e46279",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
@@ -112,7 +112,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "84799992-3cac-4e6e-a426-65a51fbf2cb7",
+								"id": "276f84d8-84d3-4b09-ba14-2a6362bd79d1",
 								"exec": [
 									""
 								],
@@ -122,7 +122,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2d41cbc1-deea-4a1b-a31f-9229a5b1343f",
+								"id": "913e5e6e-4e40-4d07-9b21-66bab36c698a",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
@@ -164,7 +164,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "714f0ea4-50fe-467a-b620-e3329cec2e53",
+								"id": "330afbdc-6f51-4d18-b3d7-f89e25255f43",
 								"exec": [
 									"const factoryHost = pm.environment.get('factoryHost');\r",
 									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
@@ -176,7 +176,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e9d8387f-7284-4a65-b853-0384b148aecc",
+								"id": "e49ccca4-df66-4cf1-b506-bc0f17efed92",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
@@ -218,7 +218,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e8a00951-9f32-4548-a3b0-fecb346f3b87",
+								"id": "2849e956-bd31-45b5-bcea-ab099ee8402c",
 								"exec": [
 									""
 								],
@@ -228,7 +228,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "55fcde34-e2e0-44e6-8ac8-397dc8acff78",
+								"id": "f9d7f523-5e0f-40b7-8dac-dfff8e9d7d21",
 								"exec": [
 									"const callback = Buffer.from('Not a URL', \"utf-8\").toString('base64');\r",
 									"pm.request.url.query.add('callback=' + callback);"
@@ -261,6 +261,1713 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Factory",
+			"item": [
+				{
+					"name": "API",
+					"item": [
+						{
+							"name": "Status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{factoryHost}}/status",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get DB",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{factoryHost}}/_data",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"_data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"_requests",
+										"{{laptopToken}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Make a laptop",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c64a3be6-a3bc-48c8-9497-378a3ce93e52",
+										"exec": [
+											"var laptop = pm.response.json();\r",
+											"pm.globals.set('laptopToken', laptop.token);\r",
+											"pm.globals.set('laptopCallback', laptop.callbackUrl);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{factoryHost}}/_make",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"_make"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set timeout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"after\": 110000,\r\n    \"times\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{factoryHost}}/_timeout/{{laptopToken}}",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"_timeout",
+										"{{laptopToken}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set fail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": 501\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{factoryHost}}/_fail/{{laptopToken}}",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"_fail",
+										"{{laptopToken}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Receive (NEW ID)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "705606fb-bf45-4354-a93e-c573a5a09578",
+										"exec": [
+											"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
+											"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{factoryHost}}/receive/{{laptopToken}}/{{sessionId}}",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"receive",
+										"{{laptopToken}}",
+										"{{sessionId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Receive (NEW ID, Callback)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "37ac26e7-e5a5-4057-af12-e03b44a4c5df",
+										"exec": [
+											"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
+											"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{laptopCallback}}",
+									"host": [
+										"{{laptopCallback}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Receive (SAME ID, Callback)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fa1d0a70-0768-4142-9750-e47011183edf",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{laptopCallback}}",
+									"host": [
+										"{{laptopCallback}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Clean DB",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7f006ef7-259a-48d0-ba5d-a1478a378be6",
+										"exec": [
+											"pm.collectionVariables.set('lastIndex', 0);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{factoryHost}}/_data",
+									"host": [
+										"{{factoryHost}}"
+									],
+									"path": [
+										"_data"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Self-test",
+					"item": [
+						{
+							"name": "01 Positive",
+							"item": [
+								{
+									"name": "Clean DB",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5543da27-8a80-4356-b56a-557f40ed766a",
+												"exec": [
+													"pm.collectionVariables.set('lastIndex', 0);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "06745185-a06f-45c3-903a-d2cd05d01921",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_data",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_data"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Make a laptop",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "711f79fb-c311-414b-bf5f-fc9b61bbe12f",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"var laptop = pm.response.json();\r",
+													"pm.globals.set('laptopToken', laptop.token);\r",
+													"pm.globals.set('laptopCallback', laptop.callbackUrl);\r",
+													"pm.globals.set('laptopCallbackB64', laptop.callbackUrlBase64);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_make",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_make"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "No requests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e2bbfb48-40d0-4145-9849-fa50051e1f37",
+												"exec": [
+													"pm.test(\"There are no requests\", function () {\r",
+													"    var requests = pm.response.json().requests;\r",
+													"    pm.expect(requests).to.have.lengthOf(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Receive",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "c0e527d1-6f0a-492c-8da6-22d562fe9de1",
+												"exec": [
+													"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "f273b8ee-2aa1-4df3-90b3-5c2343bd3a9d",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{laptopCallback}}",
+											"host": [
+												"{{laptopCallback}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Success request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8c300a3c-27e8-4a91-b9aa-3417f1f728e7",
+												"exec": [
+													"var requests = pm.response.json().requests;\r",
+													"pm.test(\"There is 1 request\", function () {\r",
+													"    pm.expect(requests).to.have.lengthOf(1);\r",
+													"});\r",
+													"pm.test(\"There should be a Success request\", function () {\r",
+													"    pm.expect(requests[0].response).to.equal(\"success\");\r",
+													"});\r",
+													"pm.test(\"There should be an ID sent\", function () {\r",
+													"    var factoryId = pm.collectionVariables.get('factoryId');\r",
+													"    var lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"    pm.expect(requests[0].body.id).to.equal(`pear${factoryId}_${lastIndex}`);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "02 Negative - Fail",
+							"item": [
+								{
+									"name": "Clean DB",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c6ff6f96-8c7c-43e1-878b-e289eedcb1ac",
+												"exec": [
+													"pm.collectionVariables.set('lastIndex', 0);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_data",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_data"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Make a laptop",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "bf01227a-e60a-425c-9c2d-4bdd8e1a07d9",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"var laptop = pm.response.json();\r",
+													"pm.globals.set('laptopToken', laptop.token);\r",
+													"pm.globals.set('laptopCallback', laptop.callbackUrl);\r",
+													"pm.globals.set('laptopCallbackB64', laptop.callbackUrlBase64);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_make",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_make"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Set fail (409)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"status\": 409\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_fail/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_fail",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "No requests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "be09eb24-d786-4e84-b7dc-d532bcda5377",
+												"exec": [
+													"pm.test(\"There are no requests\", function () {\r",
+													"    var requests = pm.response.json().requests;\r",
+													"    pm.expect(requests).to.have.lengthOf(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Receive",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "4f5d6bc1-771d-4354-81ad-573e12031561",
+												"exec": [
+													"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "6494347e-3a92-4d0d-b1a9-526288260c5c",
+												"exec": [
+													"pm.test(\"Status code is 409\", function () {\r",
+													"    pm.response.to.have.status(409);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{laptopCallback}}",
+											"host": [
+												"{{laptopCallback}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Fail request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2d6d4cb0-8796-4092-b86a-19dcc5a706f7",
+												"exec": [
+													"var requests = pm.response.json().requests;\r",
+													"pm.test(\"There is 1 request\", function () {\r",
+													"    pm.expect(requests).to.have.lengthOf(1);\r",
+													"});\r",
+													"pm.test(\"There should be a Success request\", function () {\r",
+													"    pm.expect(requests[0].response).to.equal(\"fail\");\r",
+													"    pm.expect(requests[0].status).to.equal(409);\r",
+													"});\r",
+													"pm.test(\"There should be an ID sent\", function () {\r",
+													"    var factoryId = pm.collectionVariables.get('factoryId');\r",
+													"    var lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"    pm.expect(requests[0].body.id).to.equal(`pear${factoryId}_${lastIndex}`);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "03 Negative - Timeout",
+							"item": [
+								{
+									"name": "Clean DB",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6456f1fb-22b2-4d8a-8199-887b20e1db7d",
+												"exec": [
+													"pm.collectionVariables.set('lastIndex', 0);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_data",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_data"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Make a laptop",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "96836bb2-568f-423d-9526-4d07c041815e",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"var laptop = pm.response.json();\r",
+													"pm.globals.set('laptopToken', laptop.token);\r",
+													"pm.globals.set('laptopCallback', laptop.callbackUrl);\r",
+													"pm.globals.set('laptopCallbackB64', laptop.callbackUrlBase64);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_make",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_make"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Set timeout (2x 2sec)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"after\": 2000,\r\n    \"times\": 2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_timeout/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_timeout",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "No requests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "bfc25878-6301-4bd2-bf8c-90ca0d396e41",
+												"exec": [
+													"pm.test(\"There are no requests\", function () {\r",
+													"    var requests = pm.response.json().requests;\r",
+													"    pm.expect(requests).to.have.lengthOf(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Receive #1 - Timeout",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "f8fde24e-0dd2-409b-a085-e0ed4be1b1f8",
+												"exec": [
+													"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "212c69f2-3af6-4667-822d-cad6362bdfb2",
+												"exec": [
+													"pm.test(\"Status code is 408\", function () {\r",
+													"    pm.response.to.have.status(408);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{laptopCallback}}",
+											"host": [
+												"{{laptopCallback}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Receive #2 - Timeout",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "744a44e6-5973-4e72-b3ba-ec5343beb4ec",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "f0381a38-d3c7-4dcf-ac9d-f6b446e1fedd",
+												"exec": [
+													"pm.test(\"Status code is 408\", function () {\r",
+													"    pm.response.to.have.status(408);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{laptopCallback}}",
+											"host": [
+												"{{laptopCallback}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Receive #3 - Success",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "d8e5f3f0-1e26-4cce-9d44-8fa0581d9a20",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "48e425d4-15bf-4183-a060-5156643afee0",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{laptopCallback}}",
+											"host": [
+												"{{laptopCallback}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "All requests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ea1a8595-e8bd-4cda-a7a0-70d4887ce0af",
+												"exec": [
+													"var requests = pm.response.json().requests;\r",
+													"pm.test(\"There is 3request\", function () {\r",
+													"    pm.expect(requests).to.have.lengthOf(3);\r",
+													"});\r",
+													"pm.test(\"There should be a 2 timeout requests\", function () {\r",
+													"    pm.expect(requests[0].response).to.equal(\"timeout\");\r",
+													"    pm.expect(requests[0].status).to.equal(408);\r",
+													"    pm.expect(requests[1].response).to.equal(\"timeout\");\r",
+													"    pm.expect(requests[1].status).to.equal(408);\r",
+													"});\r",
+													"pm.test(\"There should be a Success request\", function () {\r",
+													"    pm.expect(requests[2].response).to.equal(\"success\");\r",
+													"    pm.expect(requests[2].status).to.equal(200);\r",
+													"});\r",
+													"pm.test(\"There should be an ID sent\", function () {\r",
+													"    var factoryId = pm.collectionVariables.get('factoryId');\r",
+													"    var lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"    pm.expect(requests[2].body.id).to.equal(`pear${factoryId}_${lastIndex}`);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Dev",
+					"item": [
+						{
+							"name": "01 Positive",
+							"item": [
+								{
+									"name": "Clean DB",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0c96aa70-9e86-49ce-9b20-fb070ab737ca",
+												"exec": [
+													"pm.collectionVariables.set('lastIndex', 1);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "54606a4f-325d-4211-a2d1-eb6f4fcf8724",
+												"exec": [
+													"pm.globals.unset('retries');"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_data",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_data"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Make a laptop",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d8dd6ca0-db4a-481c-b89c-3518952a2edc",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"var laptop = pm.response.json();\r",
+													"pm.globals.set('laptopToken', laptop.token);\r",
+													"pm.globals.set('laptopCallback', laptop.callbackUrl);\r",
+													"pm.globals.set('laptopCallbackB64', laptop.callbackUrlBase64);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_make",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_make"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Request ID",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{applicationHost}}/id?factoryId={{factoryId}}&callback={{laptopCallbackB64}}",
+											"host": [
+												"{{applicationHost}}"
+											],
+											"path": [
+												"id"
+											],
+											"query": [
+												{
+													"key": "factoryId",
+													"value": "{{factoryId}}"
+												},
+												{
+													"key": "callback",
+													"value": "{{laptopCallbackB64}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wait for success request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ef86bb92-bccb-4162-8fa3-c66a0e87cd97",
+												"exec": [
+													"pm.test(\"There should be an ID sent\", function () {\r",
+													"    let requests = pm.response.json().requests;\r",
+													"    let successfulRequest = requests.find(r => r.response === 'success');\r",
+													"    if (successfulRequest) {\r",
+													"        var factoryId = pm.collectionVariables.get('factoryId');\r",
+													"        var lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^pear${factoryId}_\\\\d+$`));\r",
+													"    } else {\r",
+													"        const RETRIES = 'retries';\r",
+													"        const MAX_RETRY = pm.collectionVariables.get('maxRetry');\r",
+													"        let retries = pm.globals.has(RETRIES) ? pm.globals.get(RETRIES) : 0;\r",
+													"        if (retries < MAX_RETRY) {\r",
+													"            postman.setNextRequest(pm.info.requestName);\r",
+													"            pm.globals.set(RETRIES, retries+1);\r",
+													"            setTimeout(function(){}, pm.collectionVariables.get('retryDelay')); \r",
+													"        } else {\r",
+													"            postman.setNextRequest(null);\r",
+													"            pm.globals.unset(RETRIES);\r",
+													"            throw new Error(\"Request did not arrive in \" + MAX_RETRY +\" retries!\");\r",
+													"        }\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "02 Negative - Fail",
+							"item": [
+								{
+									"name": "Clean DB",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "06a4c2e2-948a-4310-9876-28a3517974b2",
+												"exec": [
+													"pm.collectionVariables.set('lastIndex', 1);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "c2dca3e4-4cea-4a19-a92b-05f737721a1a",
+												"exec": [
+													"pm.globals.unset('retries');"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_data",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_data"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Make a laptop",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "18ceb2b3-e816-4c21-93c3-40fc740d33a9",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"var laptop = pm.response.json();\r",
+													"pm.globals.set('laptopToken', laptop.token);\r",
+													"pm.globals.set('laptopCallback', laptop.callbackUrl);\r",
+													"pm.globals.set('laptopCallbackB64', laptop.callbackUrlBase64);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_make",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_make"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Set fail (409)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"status\": 409\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_fail/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_fail",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Request ID",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{applicationHost}}/id?factoryId={{factoryId}}&callback={{laptopCallbackB64}}",
+											"host": [
+												"{{applicationHost}}"
+											],
+											"path": [
+												"id"
+											],
+											"query": [
+												{
+													"key": "factoryId",
+													"value": "{{factoryId}}"
+												},
+												{
+													"key": "callback",
+													"value": "{{laptopCallbackB64}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wait for success request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f0d8e08f-111f-48c0-8020-a6700076fbd3",
+												"exec": [
+													"pm.test(\"There should be an ID sent\", function () {\r",
+													"    let requests = pm.response.json().requests;\r",
+													"    console.log(requests);\r",
+													"    let successfulRequest = requests.find(r => r.response === 'fail');\r",
+													"    if (successfulRequest) {\r",
+													"        var factoryId = pm.collectionVariables.get('factoryId');\r",
+													"        var lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^pear${factoryId}_\\\\d+$`));\r",
+													"    } else {\r",
+													"        const RETRIES = 'retries';\r",
+													"        const MAX_RETRY = pm.collectionVariables.get('maxRetry');\r",
+													"        let retries = pm.globals.has(RETRIES) ? pm.globals.get(RETRIES) : 0;\r",
+													"        if (retries < MAX_RETRY) {\r",
+													"            postman.setNextRequest(pm.info.requestName);\r",
+													"            pm.globals.set(RETRIES, retries+1);\r",
+													"            setTimeout(function(){}, pm.collectionVariables.get('retryDelay')); \r",
+													"        } else {\r",
+													"            postman.setNextRequest(null);\r",
+													"            pm.globals.unset(RETRIES);\r",
+													"            throw new Error(\"Request did not arrive in \" + MAX_RETRY +\" retries!\");\r",
+													"        }\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "03 Negative - Timeout",
+							"item": [
+								{
+									"name": "Clean DB",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b008e378-a199-4703-acfd-56145f6d7dff",
+												"exec": [
+													"pm.collectionVariables.set('lastIndex', 1);\r",
+													"pm.globals.unset('retries');"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_data",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_data"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Make a laptop",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "44fe75e9-b2eb-49d5-84f3-487d9a3002c3",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"var laptop = pm.response.json();\r",
+													"pm.globals.set('laptopToken', laptop.token);\r",
+													"pm.globals.set('laptopCallback', laptop.callbackUrl);\r",
+													"pm.globals.set('laptopCallbackB64', laptop.callbackUrlBase64);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"factoryId\": {{factoryId}},\r\n    \"baseUrl\": \"{{factoryHost}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_make",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_make"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Set timeout (2x 2sec)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"after\": 2000,\r\n    \"times\": 2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{factoryHost}}/_timeout/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_timeout",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Request ID",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{applicationHost}}/id?factoryId={{factoryId}}&callback={{laptopCallbackB64}}",
+											"host": [
+												"{{applicationHost}}"
+											],
+											"path": [
+												"id"
+											],
+											"query": [
+												{
+													"key": "factoryId",
+													"value": "{{factoryId}}"
+												},
+												{
+													"key": "callback",
+													"value": "{{laptopCallbackB64}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wait for success request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d58a891e-5b7b-4fbb-97b0-68968b528b22",
+												"exec": [
+													"pm.test(\"There should be an ID sent\", function () {\r",
+													"    let requests = pm.response.json().requests;\r",
+													"    let successfulRequest = requests.find(r => r.response === 'success');\r",
+													"    if (successfulRequest) {\r",
+													"        var factoryId = pm.collectionVariables.get('factoryId');\r",
+													"        var lastIndex = pm.collectionVariables.get('lastIndex');\r",
+													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^pear${factoryId}_\\\\d+$`));\r",
+													"    } else {\r",
+													"        const RETRIES = 'retries';\r",
+													"        const MAX_RETRY = pm.collectionVariables.get('maxRetry');\r",
+													"        let retries = pm.globals.has(RETRIES) ? pm.globals.get(RETRIES) : 0;\r",
+													"        if (retries < MAX_RETRY) {\r",
+													"            postman.setNextRequest(pm.info.requestName);\r",
+													"            pm.globals.set(RETRIES, retries+1);\r",
+													"            setTimeout(function(){}, pm.collectionVariables.get('retryDelay')); \r",
+													"        } else {\r",
+													"            postman.setNextRequest(null);\r",
+													"            pm.globals.unset(RETRIES);\r",
+													"            throw new Error(\"Request did not arrive in \" + MAX_RETRY +\" retries!\");\r",
+													"        }\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{factoryHost}}/_requests/{{laptopToken}}",
+											"host": [
+												"{{factoryHost}}"
+											],
+											"path": [
+												"_requests",
+												"{{laptopToken}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2a08b5f6-21dd-4dfb-bacf-0992e6772d75",
+						"type": "text/javascript",
+						"exec": [
+							"pm.request.headers.add({key: 'x-test-session-id', value: pm.collectionVariables.get('sessionId')});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7ea5601-86ea-49d9-9263-ca40ae342fa5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "07c2d630-cdec-45df-8d9d-d8a031686c16",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bc5ded8b-d55f-4fbe-9609-49d0254186a8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "004d5163-a4e0-4a59-a5b6-58d043b4cb58",
+			"key": "factoryId",
+			"value": "123"
+		},
+		{
+			"id": "f93c9606-3242-4219-81a2-7ec1d172a2de",
+			"key": "sessionId",
+			"value": "12345678-1234-1234-12345678"
+		},
+		{
+			"id": "0cee1903-8f4c-42c3-beed-147fdfe6a62d",
+			"key": "lastIndex",
+			"value": "0"
+		},
+		{
+			"id": "8bf04352-f409-4f40-8881-3c583ab19178",
+			"key": "maxRetry",
+			"value": "5"
+		},
+		{
+			"id": "421cc1c6-7b7f-4137-b1bc-7ce8003135bb",
+			"key": "retryDelay",
+			"value": "3000"
 		}
 	],
 	"protocolProfileBehavior": {}
