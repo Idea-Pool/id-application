@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "135e6049-7041-438c-a3d6-fe9a7afab645",
+		"name": "ID Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Application",
+			"item": [
+				{
+					"name": "TC01 - Request ID - OK",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5b65d9a9-1dc2-49d0-9829-c588a5d1babc",
+								"exec": [
+									"const factoryHost = pm.environment.get('factoryHost');\r",
+									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
+									"pm.request.url.query.add('callback=' + callback);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f92477b-088c-4fa9-bd47-79986d524c04",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{applicationHost}}/id/?factoryId=123",
+							"host": [
+								"{{applicationHost}}"
+							],
+							"path": [
+								"id",
+								""
+							],
+							"query": [
+								{
+									"key": "factoryId",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC02 - Request ID - Missing factoryId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c46359a8-570c-46dd-bcac-80d92d2c8ee0",
+								"exec": [
+									"const factoryHost = pm.environment.get('factoryHost');\r",
+									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
+									"pm.request.url.query.add('callback=' + callback);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cd3ba4ad-c5de-40ad-935d-0b21c2c590fa",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Has error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.contain('factoryId');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{applicationHost}}/id/",
+							"host": [
+								"{{applicationHost}}"
+							],
+							"path": [
+								"id",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC03 - Request ID - Missing callback",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "84799992-3cac-4e6e-a426-65a51fbf2cb7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d41cbc1-deea-4a1b-a31f-9229a5b1343f",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Has error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.contain('callback');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{applicationHost}}/id/?factoryId=123",
+							"host": [
+								"{{applicationHost}}"
+							],
+							"path": [
+								"id",
+								""
+							],
+							"query": [
+								{
+									"key": "factoryId",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC04 - Request ID - Invalid factoryId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "714f0ea4-50fe-467a-b620-e3329cec2e53",
+								"exec": [
+									"const factoryHost = pm.environment.get('factoryHost');\r",
+									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
+									"pm.request.url.query.add('callback=' + callback);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9d8387f-7284-4a65-b853-0384b148aecc",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Has error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.contain('factoryId');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{applicationHost}}/id/?factoryId=invalid",
+							"host": [
+								"{{applicationHost}}"
+							],
+							"path": [
+								"id",
+								""
+							],
+							"query": [
+								{
+									"key": "factoryId",
+									"value": "invalid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC05 - Request ID - Invalid callback",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e8a00951-9f32-4548-a3b0-fecb346f3b87",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "55fcde34-e2e0-44e6-8ac8-397dc8acff78",
+								"exec": [
+									"const callback = Buffer.from('Not a URL', \"utf-8\").toString('base64');\r",
+									"pm.request.url.query.add('callback=' + callback);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{applicationHost}}/id/?factoryId=123",
+							"host": [
+								"{{applicationHost}}"
+							],
+							"path": [
+								"id",
+								""
+							],
+							"query": [
+								{
+									"key": "factoryId",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

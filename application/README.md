@@ -29,25 +29,7 @@ The following **environment variables** can be used to configure the service:
 
 | Method | URL      | Description      | Response             |
 |:-------|:---------|:-----------------|:---------------------|
-| `GET`  | `/id` | Example API call | `{ hello: "world" }` |
+| `GET`  | `/id?factoryId&callback` | Request ID for a given factory | `{ }` |
 
-### API for tests
-
-| Method | URL      | Description    | Response |
-|:-------|:---------|:---------------|:---------|
-| `GET`  | `/db`    | Returns the DB | `{...}`  |
-| `GET`  | `/clean` | Cleans the DB  | `{}`     |
-
-## Docker
-
-To build the image:
-
-```console
-docker build -t ts-service:latest .
-```
-
-### Run service
-
-```console
-docker run -d -p 3000:3000 ts-service:latest
-```
+* `factoryId`: `number`, the ID of the factory which is requesting the next sequence ID
+* `callback`: `string`, the Base64 encoded URL to callback and send the ID to the factoryŁ

@@ -1,5 +1,0 @@
-{
-    "prefix": "pear",
-    "maxRetry": 5,
-    "failedStatus": 409
-}

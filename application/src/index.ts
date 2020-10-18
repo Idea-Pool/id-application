@@ -2,19 +2,7 @@ import express = require('express');
 import { transports, format } from 'winston';
 import { logger } from 'express-winston';
 import { serveNextID } from './application';
-
-const parseNumEnv = (value: string, def: number): number => {
-    let res = def;
-    if (typeof value === "string") {
-        res = parseInt(value, 10);
-    }
-    if (isNaN(res)) {
-        res = def;
-    }
-    return res;
-}
-
-const PORT = parseNumEnv(process.env.PORT, 3001);
+import { PORT } from "./config";
 
 const app: express.Application = express();
 

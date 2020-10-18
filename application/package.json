@@ -7,9 +7,9 @@
   "scripts": {
     "tsc:watch": "tsc -w",
     "build": "npm run clean && npm run compile && npm run copyToDist",
-    "copyToDist": "copyfiles -f *.txt *.md package.json dist",
+    "copyToDist": "copyfiles -f *.txt *.md *.json dist",
     "clean": "rimraf ./dist ./docs",
-    "tslint": "tslint -c tslint.json ./src/**/*.ts ./tests/**/*.ts",
+    "tslint": "tslint --fix -c tslint.json ./src/**/*.ts ./tests/**/*.ts",
     "compile": "tsc && npm run tslint",
     "start": "npm run build && node ./dist/index.js"
   },
