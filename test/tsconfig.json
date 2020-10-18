@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "lib": [
+            "es6",
+            "es2017",
+            "esnext.asynciterable"
+        ],
+        "resolveJsonModule": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "utils",
+        "spec",
+        "config",
+        "*.ts"
+    ]
+}

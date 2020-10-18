@@ -1,0 +1,52 @@
+{
+  "name": "ts-service-test-seed",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "clean": "rimraf allure-results/*",
+    "test": "jest",
+    "test:e2e": "npm run clean && npm-run-all -c \"test -- {0}\" report:serve",
+    "report:generate": "node scripts/report-generate.js",
+    "report:serve": "node scripts/report-serve.js",
+    "report:open": "allure open",
+    "lint": "tslint -c tslint.json --fix \"@(spec|utils|config)/**/*.ts\" *.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szikszail/ts-service-test-seed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/szikszail/ts-service-test-seed/issues"
+  },
+  "homepage": "https://github.com/szikszail/ts-service-test-seed#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.9",
+    "@types/jest-expect-message": "^1.0.2",
+    "@types/jest-json-schema": "^2.1.2",
+    "@types/node-fetch": "^2.5.7",
+    "allure-commandline": "^2.13.0",
+    "http-status": "^1.4.2",
+    "husky": "^4.2.5",
+    "jest": "^26.3.0",
+    "jest-allure": "^0.1.3",
+    "jest-expect-message": "^1.0.2",
+    "jest-json-schema": "^2.1.0",
+    "node-fetch": "^2.6.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.1.4",
+    "tslint": "^6.1.3",
+    "typescript": "^3.9.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  },
+  "dependencies": {
+    "jest-junit": "^11.1.0"
+  }
+}
