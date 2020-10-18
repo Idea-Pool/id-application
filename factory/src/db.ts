@@ -74,16 +74,20 @@ export const isSessionLoaded = (sessionId: string): boolean => !!db && db.sessio
 export const canSessionBeLoaded = (sessionId: string): boolean => existsSync(getDBPath(sessionId));
 
 export const load = (sessionId: string) => {
-    db = readJsonSync(getDBPath(sessionId));
+    try {
+        db = readJsonSync(getDBPath(sessionId));
+    } catch (e) {
+        clean(sessionId);
+    }
 };
 
 export const flush = () => {
     writeJsonSync(getDBPath(db.sessionId), db, { spaces: 2 });
 };
 
-export const clean = () => {
+export const clean = (sessionId?: string) => {
     db = {
-        sessionId: db.sessionId,
+        sessionId: sessionId || db.sessionId,
         baseUrl: db.baseUrl,
         laptops: [],
         exceptions: [],

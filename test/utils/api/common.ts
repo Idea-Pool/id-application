@@ -12,7 +12,7 @@ const environment = env();
 
 export const prepareUrl = (url: string, base?: string): string => {
     if (!/^https?:/i.test(url)) {
-        base = base || environment.url;
+        base = base || environment.factoryHost;
         return [
             base.replace(/\/$/, ''),
             url.replace(/^\//, '')
@@ -42,8 +42,8 @@ export interface Empty {
 
 export type HTTP_METHOD = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-const init = (): RequestInit => ({});
-const json = <T = string>(body: T, options?: RequestInit): RequestInit => {
+export const init = (): RequestInit => ({});
+export const json = <T = string>(body: T, options?: RequestInit): RequestInit => {
     if (!options) {
         options = init();
     }
@@ -58,7 +58,7 @@ const json = <T = string>(body: T, options?: RequestInit): RequestInit => {
     }
     return options;
 };
-const method = (httpMethod: HTTP_METHOD, options?: RequestInit): RequestInit => {
+export const method = (httpMethod: HTTP_METHOD, options?: RequestInit): RequestInit => {
     if (!options) {
         options = init();
     }

@@ -1,5 +1,5 @@
 {
-  "name": "ts-service-test-seed",
+  "name": "id-application-tests",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -11,16 +11,6 @@
     "report:open": "allure open",
     "lint": "tslint -c tslint.json --fix \"@(spec|utils|config)/**/*.ts\" *.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/szikszail/ts-service-test-seed.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/szikszail/ts-service-test-seed/issues"
-  },
-  "homepage": "https://github.com/szikszail/ts-service-test-seed#readme",
   "devDependencies": {
     "@types/jest": "^26.0.9",
     "@types/jest-expect-message": "^1.0.2",
@@ -47,6 +37,7 @@
     }
   },
   "dependencies": {
-    "jest-junit": "^11.1.0"
+    "jest-junit": "^11.1.0",
+    "uuid": "^8.3.1"
   }
 }
