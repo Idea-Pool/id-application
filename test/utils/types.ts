@@ -27,10 +27,10 @@ export interface FailException extends ReceiveException {
 
 export type CallbackResponse = 'timeout' | 'fail' | 'success';
 
-export interface CallbackRequest {
+export interface CallbackRequest<T = string> {
     token: string;
     headers: IncomingHttpHeaders;
-    body: string;
+    body: T;
     received: number;
     status: number;
     response: CallbackResponse;

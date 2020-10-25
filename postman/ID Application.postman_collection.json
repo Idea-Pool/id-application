@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e6b96084-0c4c-4817-951d-a13879a9570b",
+		"_postman_id": "1093dcb1-b38d-4266-b39c-6105408ce73a",
 		"name": "ID Application",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5b15f298-6da7-4933-8091-1ad0fd12ec51",
+								"id": "79317dfa-e252-4b7a-9dd4-463d83728d08",
 								"exec": [
 									"const factoryHost = pm.environment.get('factoryHost');\r",
 									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
@@ -26,7 +26,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "695150be-8a75-4840-9499-eb515bf8b12f",
+								"id": "d71d5bbf-e3bd-4863-b93d-9de26bbd4d19",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -64,7 +64,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "87f2446b-e6d1-4b23-aed8-a902b9a5e726",
+								"id": "749ce66c-89ea-4e13-859a-f2e2ad3b3c2e",
 								"exec": [
 									"const factoryHost = pm.environment.get('factoryHost');\r",
 									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
@@ -76,7 +76,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c37f4e53-4e18-4755-b0b7-d78e32e46279",
+								"id": "b029672d-d1a4-40ae-894e-e9aa4798abe5",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
@@ -112,7 +112,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "276f84d8-84d3-4b09-ba14-2a6362bd79d1",
+								"id": "feeb3457-98fd-4f0c-b250-13edff724b74",
 								"exec": [
 									""
 								],
@@ -122,7 +122,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "913e5e6e-4e40-4d07-9b21-66bab36c698a",
+								"id": "44117de7-ea10-4281-8912-b210699b99ee",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
@@ -164,7 +164,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "330afbdc-6f51-4d18-b3d7-f89e25255f43",
+								"id": "7502c69e-abee-4a96-a287-db0f5b39f5b9",
 								"exec": [
 									"const factoryHost = pm.environment.get('factoryHost');\r",
 									"const callback = Buffer.from(factoryHost, \"utf-8\").toString('base64');\r",
@@ -176,7 +176,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e49ccca4-df66-4cf1-b506-bc0f17efed92",
+								"id": "ff640a15-bb6f-46b6-9df1-586bd1ba5a12",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
@@ -218,9 +218,10 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2849e956-bd31-45b5-bcea-ab099ee8402c",
+								"id": "1f9398a9-96fe-49cd-aca6-bea2aff731e8",
 								"exec": [
-									""
+									"const callback = Buffer.from('Not a URL', \"utf-8\").toString('base64');\r",
+									"pm.request.url.query.add('callback=' + callback);"
 								],
 								"type": "text/javascript"
 							}
@@ -228,10 +229,15 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f9d7f523-5e0f-40b7-8dac-dfff8e9d7d21",
+								"id": "c00e9bf5-daa0-438d-a1c3-bd757e2f5b36",
 								"exec": [
-									"const callback = Buffer.from('Not a URL', \"utf-8\").toString('base64');\r",
-									"pm.request.url.query.add('callback=' + callback);"
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Has error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.contain('callback');\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -326,7 +332,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c64a3be6-a3bc-48c8-9497-378a3ce93e52",
+										"id": "e0776c1c-a729-4ed4-a883-dff8164e3269",
 										"exec": [
 											"var laptop = pm.response.json();\r",
 											"pm.globals.set('laptopToken', laptop.token);\r",
@@ -420,7 +426,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "705606fb-bf45-4354-a93e-c573a5a09578",
+										"id": "c40caa10-ef5a-4932-9d72-a91f485791d2",
 										"exec": [
 											"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
 											"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
@@ -461,7 +467,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "37ac26e7-e5a5-4057-af12-e03b44a4c5df",
+										"id": "fb8b1ad0-95b4-4e2e-b11f-49103fe7127c",
 										"exec": [
 											"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
 											"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
@@ -497,7 +503,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "fa1d0a70-0768-4142-9750-e47011183edf",
+										"id": "5024ef43-0add-48b0-92bd-66b521394ad6",
 										"exec": [
 											""
 										],
@@ -532,7 +538,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7f006ef7-259a-48d0-ba5d-a1478a378be6",
+										"id": "5df4a91a-80d0-4c5b-8ead-b29fbe52404f",
 										"exec": [
 											"pm.collectionVariables.set('lastIndex', 0);"
 										],
@@ -571,7 +577,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "5543da27-8a80-4356-b56a-557f40ed766a",
+												"id": "9f4f3a1e-cecf-4baa-ade4-8f1fa2fab4e4",
 												"exec": [
 													"pm.collectionVariables.set('lastIndex', 0);"
 												],
@@ -581,7 +587,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "06745185-a06f-45c3-903a-d2cd05d01921",
+												"id": "32dbdd65-59f4-4952-9053-a20b7f05f959",
 												"exec": [
 													""
 												],
@@ -610,7 +616,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "711f79fb-c311-414b-bf5f-fc9b61bbe12f",
+												"id": "fcb3a647-0fed-4bea-81ff-013e49291d2e",
 												"exec": [
 													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
@@ -654,7 +660,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "e2bbfb48-40d0-4145-9849-fa50051e1f37",
+												"id": "1c56b405-0d82-4eae-a83e-89b89aed4149",
 												"exec": [
 													"pm.test(\"There are no requests\", function () {\r",
 													"    var requests = pm.response.json().requests;\r",
@@ -687,7 +693,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "c0e527d1-6f0a-492c-8da6-22d562fe9de1",
+												"id": "d985f44a-379b-424d-9251-13dc965e6e12",
 												"exec": [
 													"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
 													"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
@@ -698,7 +704,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "f273b8ee-2aa1-4df3-90b3-5c2343bd3a9d",
+												"id": "90a40e42-40bb-4b74-9c38-cb0456065a7c",
 												"exec": [
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
@@ -735,7 +741,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "8c300a3c-27e8-4a91-b9aa-3417f1f728e7",
+												"id": "58736295-b1a6-42b4-81cd-ce875f99b689",
 												"exec": [
 													"var requests = pm.response.json().requests;\r",
 													"pm.test(\"There is 1 request\", function () {\r",
@@ -783,7 +789,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "c6ff6f96-8c7c-43e1-878b-e289eedcb1ac",
+												"id": "0467ecde-5dde-4a88-80b7-aca4653ef170",
 												"exec": [
 													"pm.collectionVariables.set('lastIndex', 0);"
 												],
@@ -812,7 +818,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "bf01227a-e60a-425c-9c2d-4bdd8e1a07d9",
+												"id": "6387cb87-d27c-4bf3-a03a-13eca786243f",
 												"exec": [
 													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
@@ -883,7 +889,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "be09eb24-d786-4e84-b7dc-d532bcda5377",
+												"id": "f1dd1eb3-e00c-4a13-b74c-f7da0d78d685",
 												"exec": [
 													"pm.test(\"There are no requests\", function () {\r",
 													"    var requests = pm.response.json().requests;\r",
@@ -916,7 +922,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "4f5d6bc1-771d-4354-81ad-573e12031561",
+												"id": "b57979b7-9f3a-4132-a0b4-d4f110ec4e48",
 												"exec": [
 													"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
 													"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
@@ -927,7 +933,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "6494347e-3a92-4d0d-b1a9-526288260c5c",
+												"id": "5272ba84-c295-4d62-a6e4-4c66f983a800",
 												"exec": [
 													"pm.test(\"Status code is 409\", function () {\r",
 													"    pm.response.to.have.status(409);\r",
@@ -964,7 +970,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "2d6d4cb0-8796-4092-b86a-19dcc5a706f7",
+												"id": "db9252ad-f972-47ae-8557-4475de21957d",
 												"exec": [
 													"var requests = pm.response.json().requests;\r",
 													"pm.test(\"There is 1 request\", function () {\r",
@@ -1013,7 +1019,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "6456f1fb-22b2-4d8a-8199-887b20e1db7d",
+												"id": "3ca5afcf-16ca-4fca-bab2-bf04ecc14729",
 												"exec": [
 													"pm.collectionVariables.set('lastIndex', 0);"
 												],
@@ -1042,7 +1048,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "96836bb2-568f-423d-9526-4d07c041815e",
+												"id": "7cb0e0f1-f357-4391-90e8-af39e2b200c7",
 												"exec": [
 													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
@@ -1113,7 +1119,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "bfc25878-6301-4bd2-bf8c-90ca0d396e41",
+												"id": "78d0ad0d-9415-405f-8771-f95dceb09dde",
 												"exec": [
 													"pm.test(\"There are no requests\", function () {\r",
 													"    var requests = pm.response.json().requests;\r",
@@ -1146,7 +1152,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "f8fde24e-0dd2-409b-a085-e0ed4be1b1f8",
+												"id": "e227be23-2090-4a57-8797-e0b2c8d0eed9",
 												"exec": [
 													"const lastIndex = pm.collectionVariables.get('lastIndex');\r",
 													"pm.collectionVariables.set('lastIndex', lastIndex + 1);"
@@ -1157,7 +1163,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "212c69f2-3af6-4667-822d-cad6362bdfb2",
+												"id": "b1bd7766-3e6d-4649-abd7-6296faad4c8f",
 												"exec": [
 													"pm.test(\"Status code is 408\", function () {\r",
 													"    pm.response.to.have.status(408);\r",
@@ -1194,7 +1200,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "744a44e6-5973-4e72-b3ba-ec5343beb4ec",
+												"id": "177bfd07-0290-4c0f-96fc-ff2bb113e0cc",
 												"exec": [
 													""
 												],
@@ -1204,7 +1210,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "f0381a38-d3c7-4dcf-ac9d-f6b446e1fedd",
+												"id": "d6f79a8a-e4e5-4566-8342-3a53c83f227d",
 												"exec": [
 													"pm.test(\"Status code is 408\", function () {\r",
 													"    pm.response.to.have.status(408);\r",
@@ -1241,7 +1247,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "d8e5f3f0-1e26-4cce-9d44-8fa0581d9a20",
+												"id": "1e0407d0-216f-4dff-a0c9-c9ef7ffeedf1",
 												"exec": [
 													""
 												],
@@ -1251,7 +1257,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "48e425d4-15bf-4183-a060-5156643afee0",
+												"id": "7735b5db-fa8b-4061-8cb4-bbbed0bcc83c",
 												"exec": [
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
@@ -1288,7 +1294,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "ea1a8595-e8bd-4cda-a7a0-70d4887ce0af",
+												"id": "9b4cf554-e2c3-426a-81b5-2f7ad6f6af93",
 												"exec": [
 													"var requests = pm.response.json().requests;\r",
 													"pm.test(\"There is 3request\", function () {\r",
@@ -1350,7 +1356,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "0c96aa70-9e86-49ce-9b20-fb070ab737ca",
+												"id": "2b90c0a1-bd7f-45fd-a886-2c8a1a7d835e",
 												"exec": [
 													"pm.collectionVariables.set('lastIndex', 1);"
 												],
@@ -1360,7 +1366,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "54606a4f-325d-4211-a2d1-eb6f4fcf8724",
+												"id": "cd6b3375-a6c1-4520-bb48-f1573e7fd91a",
 												"exec": [
 													"pm.globals.unset('retries');"
 												],
@@ -1389,7 +1395,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "d8dd6ca0-db4a-481c-b89c-3518952a2edc",
+												"id": "c1382ed2-c474-440c-a8b7-609a8cacdb81",
 												"exec": [
 													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
@@ -1460,7 +1466,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "ef86bb92-bccb-4162-8fa3-c66a0e87cd97",
+												"id": "35051aeb-88d3-4db6-9a84-ccc717053a8b",
 												"exec": [
 													"pm.test(\"There should be an ID sent\", function () {\r",
 													"    let requests = pm.response.json().requests;\r",
@@ -1518,7 +1524,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "06a4c2e2-948a-4310-9876-28a3517974b2",
+												"id": "5961894c-96cf-48a6-84cd-f336a9de7c53",
 												"exec": [
 													"pm.collectionVariables.set('lastIndex', 1);"
 												],
@@ -1528,7 +1534,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "c2dca3e4-4cea-4a19-a92b-05f737721a1a",
+												"id": "232e3f3f-bf41-4f00-a5da-2ae4534319ac",
 												"exec": [
 													"pm.globals.unset('retries');"
 												],
@@ -1557,7 +1563,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "18ceb2b3-e816-4c21-93c3-40fc740d33a9",
+												"id": "a9be3ad5-3780-47d5-8c4f-f6a41234db95",
 												"exec": [
 													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
@@ -1655,7 +1661,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "f0d8e08f-111f-48c0-8020-a6700076fbd3",
+												"id": "5a4d7412-89a2-4ca1-bee4-287b997eddcf",
 												"exec": [
 													"pm.test(\"There should be an ID sent\", function () {\r",
 													"    let requests = pm.response.json().requests;\r",
@@ -1714,7 +1720,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "b008e378-a199-4703-acfd-56145f6d7dff",
+												"id": "09ef5e6b-b926-4cab-8c5e-882b6d3931ce",
 												"exec": [
 													"pm.collectionVariables.set('lastIndex', 1);\r",
 													"pm.globals.unset('retries');"
@@ -1744,7 +1750,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "44fe75e9-b2eb-49d5-84f3-487d9a3002c3",
+												"id": "c3c6e54b-01e7-43c6-8047-06df59a6d61c",
 												"exec": [
 													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
@@ -1842,7 +1848,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "d58a891e-5b7b-4fbb-97b0-68968b528b22",
+												"id": "1553a322-8486-4b98-8166-c3cd03920b64",
 												"exec": [
 													"pm.test(\"There should be an ID sent\", function () {\r",
 													"    let requests = pm.response.json().requests;\r",
@@ -1900,7 +1906,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "2a08b5f6-21dd-4dfb-bacf-0992e6772d75",
+						"id": "f4b42d0a-3df5-4e42-a650-eedce18fb041",
 						"type": "text/javascript",
 						"exec": [
 							"pm.request.headers.add({key: 'x-test-session-id', value: pm.collectionVariables.get('sessionId')});"
@@ -1910,7 +1916,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a7ea5601-86ea-49d9-9263-ca40ae342fa5",
+						"id": "64e9892c-b489-4954-98ca-6e6c06851501",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1925,7 +1931,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "07c2d630-cdec-45df-8d9d-d8a031686c16",
+				"id": "ecf2765c-35a3-4984-91e7-be19fcb8f7df",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1935,7 +1941,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "bc5ded8b-d55f-4fbe-9609-49d0254186a8",
+				"id": "c29c4fe3-fb4a-4071-a327-6fd73abe6ff5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1945,27 +1951,27 @@
 	],
 	"variable": [
 		{
-			"id": "004d5163-a4e0-4a59-a5b6-58d043b4cb58",
+			"id": "cbf635b7-777c-4894-9e23-9f2d51c6cc25",
 			"key": "factoryId",
 			"value": "123"
 		},
 		{
-			"id": "f93c9606-3242-4219-81a2-7ec1d172a2de",
+			"id": "9e333b1d-a882-4943-9041-649232b11714",
 			"key": "sessionId",
 			"value": "12345678-1234-1234-12345678"
 		},
 		{
-			"id": "0cee1903-8f4c-42c3-beed-147fdfe6a62d",
+			"id": "18d05feb-c8f4-46ea-b34d-5d90020c4283",
 			"key": "lastIndex",
 			"value": "0"
 		},
 		{
-			"id": "8bf04352-f409-4f40-8881-3c583ab19178",
+			"id": "162bb3d6-d2db-4904-87a7-8eebc8820d74",
 			"key": "maxRetry",
 			"value": "5"
 		},
 		{
-			"id": "421cc1c6-7b7f-4137-b1bc-7ce8003135bb",
+			"id": "4d321274-a473-478a-9720-1fe7d8a19ac2",
 			"key": "retryDelay",
 			"value": "3000"
 		}

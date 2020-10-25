@@ -10,7 +10,8 @@ import {
 import { env } from '../../config';
 import { v4 as uuidv4 } from 'uuid';
 import { RequestInit } from 'node-fetch';
-import { DB, Laptop } from '../types';
+import { CallbackRequest, DB, FailException, Laptop, TimeoutException } from '../types';
+import { IDResponse } from './id-application';
 
 export interface POCResponse {
   error?: string;
@@ -18,6 +19,8 @@ export interface POCResponse {
 
 const environment = env();
 const getUrl = (path: string) => prepareUrl(path, environment.factoryHost);
+
+const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
 
 export interface LaptopResponse extends POCResponse, Partial<Laptop> {}
 
@@ -33,6 +36,10 @@ export interface TimeoutRequest {
 
 export interface FailRequest {
     status: number;
+}
+
+export interface RequestsResponse<T> {
+  requests: CallbackRequest<T>[];
 }
 
 let sessionId: string;
@@ -97,3 +104,40 @@ export const makeLaptop = async (
     baseUrl: environment.factoryHost,
   });
 };
+
+export const setLaptopToFail = async(token: string, status: number): Promise<APIResponse<FailException>> => {
+  return await factoryPost<FailRequest, FailException>(
+    getUrl(`/_fail/${token}`),
+    { status }
+  );
+}
+
+export const setLaptopToTimeout = async(token: string, after: number, times: number): Promise<APIResponse<TimeoutException>> => {
+  return await factoryPost<TimeoutRequest, TimeoutException>(
+    getUrl(`/_timeout/${token}`),
+    { after, times }
+  );
+}
+
+export const getRequests = async <T>(
+  token: string,
+): Promise<APIResponse<RequestsResponse<T>>> => {
+  return await factoryGet<RequestsResponse<T>>(getUrl(`/_requests/${token}`));
+}
+
+export const awaitRequests = async <T>(
+  token: string, status?: number,
+): Promise<RequestsResponse<T>> => {
+  for (let i = 0; i < environment.maxRetry; ++i) {
+    const response = await getRequests<T>(token);
+    const requests = await response.parse();
+
+    if (requests.requests?.length) {
+      if (!status || requests.requests.find(r => r.status === status)) {
+        return requests;
+      }
+    }
+    await sleep(environment.retryInterval);
+  }
+  throw new Error('Factory did not receive ID!');
+}
