@@ -1,7 +1,7 @@
 {
-  "name": "factory-mock",
+  "name": "factory",
   "version": "0.0.1",
-  "description": "Factory Mock",
+  "description": "Fake factory service which produces laptops and can accept ID from the ID application",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
