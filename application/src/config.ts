@@ -9,7 +9,7 @@ export const parseNumEnv = (value: string, def: number): number => {
     return res;
 }
 
-export const PREFIX = process.env.ID_APP_PREFIX || "pear";
+export const PREFIX = process.env.ID_APP_PREFIX || "seq";
 
 export const MAX_RETRY = parseNumEnv(process.env.ID_APP_MAX_RETRY, 5);
 

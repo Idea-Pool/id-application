@@ -1,0 +1,25 @@
+@startuml api_async
+
+skinparam participant {
+    backgroundColor<<test>> Aqua
+    backgroundColor<<api>> Orange
+}
+
+participant "Service" as S <<api>>
+participant "Factory" as F <<api>>
+
+F -> S: Requesting new ID\nGET /id?factoryId&callback
+activate S #Orange
+
+S -> F: Confirmation\n200 { }
+deactivate S
+
+S -> F: Sending new ID\nPOST callback\n{ id: "seqM_N" }
+activate F #Orange
+
+F -> F: Printing label
+
+F -> S: Confirmation\n 200 { id: "seqM_N" }
+deactivate F
+
+@enduml

@@ -19,10 +19,6 @@ yarn
 yarn start
 ```
 
-## Deployed service
-
-The service available in AWS: http://ec2-18-196-8-201.eu-central-1.compute.amazonaws.com:3000
-
 ### Parameters
 
 The following **environment variables** can be used to configure the service:
@@ -64,27 +60,6 @@ In order to use the scenarios of the `Dev` folder, update the `idAppUrl` variabl
 
 **Important**, that these scenarios, after sending the ID request to the ID pearication, will wait until the ID pearication actually sends it back to the Factory (but at most 10 retries, 1 in every 10sec - to set these update `maxRetry` and `retryDelay` collection variables - after that the test will fail).
 
-## Docker
+## Use cases
 
-To build the image:
-
-```console
-docker build -t lm-factory .
-```
-
-### Run service
-
-```console
-docker run -d -p 3000:3000 lm-factory
-```
-
-## Docs
-
-For detailed documentation see the [TypeDocs documentation](https://szikszail.github.io/lm-ts-api-poc-service/).
-
-For **User cases** see [CASES.md](https://github.com/szikszail/lm-pet-ta-mock-factory/blob/master/CASES.md)
-
-## Future improvements
-
-- [ ] Use DynamoDB instead of JSON files
-- [ ] Deploy docker image to AWS EC2
+For **Use cases** see [CASES.md](https://github.com/szikszail/lm-pet-ta-mock-factory/blob/master/factory/CASES.md)

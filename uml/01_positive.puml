@@ -1,0 +1,49 @@
+@startuml 01_positive
+
+skinparam participant {
+    backgroundColor<<test>> Aqua
+    backgroundColor<<fake>> Lime
+    backgroundColor<<api>> Orange
+}
+
+participant "API tests" as API <<test>> order 10
+participant "Factory" as Factory <<fake>> order 20
+participant "ID Application" as ID <<api>> order 30
+
+autonumber
+
+== Given ==
+
+API -> Factory : Make laptop:\nPUT /_make\n{factoryId,baseUrl}
+activate Factory #Lime
+Factory -> API : 201 Created\n{<laptop>, callback, token}
+deactivate Factory
+
+== When ==
+
+API -> ID : Request ID:\nGET /id?factorId&callback
+activate ID #Orange
+ID -> API : 200 OK
+deactivate ID
+
+== Then ==
+
+loop until callback received or TIMEOUT
+    API -> Factory : Callback requests so far:\nGET /_requests/:token
+    activate Factory #Lime
+    Factory -> API : 204 No content\n{ requests: [] }
+    deactivate Factory
+
+    ...receiving callback...
+    ID -> Factory : Callback with ID:\nPOST callback\n{id: "seq123_123"}
+    activate Factory #Lime
+    Factory -> ID : 200 OK\n{id: "seq123_123"}
+    deactivate Factory
+    ...callback received...
+
+    API -> Factory : Callback requests so far:\nGET /_requests/:token
+    activate Factory #Lime
+    Factory -> API : 200 OK\n{ requests: [ { body: { id: "seq123_123", ... }} ]}
+    deactivate Factory
+end
+@enduml

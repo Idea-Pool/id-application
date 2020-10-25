@@ -1,32 +1,33 @@
-@startuml Negative / Timeout
-box
-participant "<<AWS>>\nID Application" as ID order 30
-end box
+@startuml 03_negative_timeout
 
-participant "<<Bamboo>>\nAPI tests" as API order 10
+skinparam participant {
+    backgroundColor<<test>> Aqua
+    backgroundColor<<fake>> Lime
+    backgroundColor<<api>> Orange
+}
 
-box
-participant "<<AWS>>\nFactory Mock" as Factory order 20
-end box
+participant "API tests" as API <<test>> order 10
+participant "Factory" as Factory <<fake>> order 20
+participant "ID Application" as ID <<api>> order 30
 
 autonumber
 
 == Given ==
 
 API -> Factory : Make laptop:\nPUT /_make\n{factoryId,baseUrl}
-activate Factory
+activate Factory #Lime
 Factory -> API : 201 Created\n{<laptop>}
 deactivate Factory
 
 API -> Factory : Set explicit timeout:\nPOST /_timeout/:token\n{after, times}\ntimes < MAX_RETRY
-activate Factory
+activate Factory #Lime
 Factory -> API : 201 Created\n{<timeout-exception>}
 deactivate Factory
 
 == When ==
 
 API -> ID : Request ID:\nGET /id?factorId&callback
-activate ID
+activate ID #Orange
 ID -> API : 200 OK
 deactivate ID
 
@@ -34,30 +35,32 @@ deactivate ID
 
 loop until callback received or TIMEOUT
     API -> Factory : Callback requests so far:\nGET /_requests/:token
-    activate Factory
+    activate Factory #Lime
     Factory -> API : 204 No content\n{ requests: [] }
     deactivate Factory
 
     loop $times times
         ...receiving callback...
-        {start} ID -> Factory : Callback with ID:\nPOST callback\n{id: "pear123_123"}
-        activate Factory
-        {end} Factory -> ID : 408 Request Timeout\n{id: "pear123_123"}
+        {start} ID -> Factory : Callback with ID:\nPOST callback\n{id: "seq123_123"}
+        activate Factory #Lime
+        {end} Factory -> ID : 408 Request Timeout\n{id: "seq123_123"}
         deactivate Factory
         {start} <-> {end} : after ms
         ...callback received...
     end
 
     ...receiving callback...
-    ID -> Factory : Callback with ID:\nPOST callback\n{id: "pear123_123"}
-    activate Factory
-    Factory -> ID : 200 OK\n{id: "pear123_123"}
+
+    ID -> Factory : Callback with ID:\nPOST callback\n{id: "seq123_123"}
+    activate Factory #Lime
+    Factory -> ID : 200 OK\n{id: "seq123_123"}
     deactivate Factory
+
     ...callback received...
 
     API -> Factory : Callback requests so far:\nGET /_requests/:token
-    activate Factory
-    Factory -> API : 200 OK\n{ requests: [ {\n  status: 408,\n  body: { id: "pear123_123", ... }\n}, ... ]}
+    activate Factory #Lime
+    Factory -> API : 200 OK\n{ requests: [ {\n  status: 408,\n  body: { id: "seq123_123", ... }\n}, ... ]}
     deactivate Factory
 
 end

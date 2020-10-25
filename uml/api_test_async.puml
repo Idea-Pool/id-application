@@ -1,0 +1,45 @@
+@startuml api_test_async
+
+skinparam participant {
+    backgroundColor<<test>> Aqua
+    backgroundColor<<fake>> Lime
+    backgroundColor<<api>> Orange
+}
+
+participant "Service" as S <<api>>
+participant "Factory" as F <<fake>>
+participant "Tests" as T <<test>>
+
+T -> F: Make product\nPUT /_make
+activate F #Lime
+
+F -> T: Created\n 201 { factoryId, callback, token }
+deactivate F
+
+T -> S: Requesting new ID\nGET /id?factoryId&callback
+activate S #Orange
+
+S -> T: Confirmation\n200 { }
+deactivate S
+
+T -> F: Did ID arrive?\nGET /_requests/:token
+activate F #Lime
+
+F -> T: No content\n 204 { requests: [] }
+deactivate F
+
+S -> F: Sending new ID\nPOST callback\n{ id: "seqM_N" }
+activate F #Lime
+
+F -> F: "Printing label"
+
+F -> S: Confirmation\n 200 { id: "seqM_N" }
+deactivate F
+
+T -> F: Did ID arrive?\nGET /_requests/:token
+activate F #Lime
+
+F -> T: No content\n 200 { requests: [ { id: "seqM_N" } ] }
+deactivate F
+
+@enduml

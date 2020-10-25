@@ -434,7 +434,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+									"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -475,7 +475,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+									"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -510,7 +510,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+									"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -713,7 +713,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -747,7 +747,7 @@
 													"pm.test(\"There should be an ID sent\", function () {\r",
 													"    var factoryId = pm.collectionVariables.get('factoryId');\r",
 													"    var lastIndex = pm.collectionVariables.get('lastIndex');\r",
-													"    pm.expect(requests[0].body.id).to.equal(`pear${factoryId}_${lastIndex}`);\r",
+													"    pm.expect(requests[0].body.id).to.equal(`seq${factoryId}_${lastIndex}`);\r",
 													"});"
 												],
 												"type": "text/javascript"
@@ -942,7 +942,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -977,7 +977,7 @@
 													"pm.test(\"There should be an ID sent\", function () {\r",
 													"    var factoryId = pm.collectionVariables.get('factoryId');\r",
 													"    var lastIndex = pm.collectionVariables.get('lastIndex');\r",
-													"    pm.expect(requests[0].body.id).to.equal(`pear${factoryId}_${lastIndex}`);\r",
+													"    pm.expect(requests[0].body.id).to.equal(`seq${factoryId}_${lastIndex}`);\r",
 													"});"
 												],
 												"type": "text/javascript"
@@ -1172,7 +1172,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1219,7 +1219,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1266,7 +1266,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"pear{{factoryId}}_{{lastIndex}}\"\r\n}",
+											"raw": "{\r\n    \"id\": \"seq{{factoryId}}_{{lastIndex}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1307,7 +1307,7 @@
 													"pm.test(\"There should be an ID sent\", function () {\r",
 													"    var factoryId = pm.collectionVariables.get('factoryId');\r",
 													"    var lastIndex = pm.collectionVariables.get('lastIndex');\r",
-													"    pm.expect(requests[2].body.id).to.equal(`pear${factoryId}_${lastIndex}`);\r",
+													"    pm.expect(requests[2].body.id).to.equal(`seq${factoryId}_${lastIndex}`);\r",
 													"});"
 												],
 												"type": "text/javascript"
@@ -1468,7 +1468,7 @@
 													"    if (successfulRequest) {\r",
 													"        var factoryId = pm.collectionVariables.get('factoryId');\r",
 													"        var lastIndex = pm.collectionVariables.get('lastIndex');\r",
-													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^pear${factoryId}_\\\\d+$`));\r",
+													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^seq${factoryId}_\\\\d+$`));\r",
 													"    } else {\r",
 													"        const RETRIES = 'retries';\r",
 													"        const MAX_RETRY = pm.collectionVariables.get('maxRetry');\r",
@@ -1664,7 +1664,7 @@
 													"    if (successfulRequest) {\r",
 													"        var factoryId = pm.collectionVariables.get('factoryId');\r",
 													"        var lastIndex = pm.collectionVariables.get('lastIndex');\r",
-													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^pear${factoryId}_\\\\d+$`));\r",
+													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^seq${factoryId}_\\\\d+$`));\r",
 													"    } else {\r",
 													"        const RETRIES = 'retries';\r",
 													"        const MAX_RETRY = pm.collectionVariables.get('maxRetry');\r",
@@ -1850,7 +1850,7 @@
 													"    if (successfulRequest) {\r",
 													"        var factoryId = pm.collectionVariables.get('factoryId');\r",
 													"        var lastIndex = pm.collectionVariables.get('lastIndex');\r",
-													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^pear${factoryId}_\\\\d+$`));\r",
+													"        pm.expect(successfulRequest.body.id).to.match(new RegExp(`^seq${factoryId}_\\\\d+$`));\r",
 													"    } else {\r",
 													"        const RETRIES = 'retries';\r",
 													"        const MAX_RETRY = pm.collectionVariables.get('maxRetry');\r",
